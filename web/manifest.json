@@ -1,6 +1,6 @@
 {
-    "name": "book_review",
-    "short_name": "book_review",
+    "name": "book_review_app",
+    "short_name": "book_review_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
