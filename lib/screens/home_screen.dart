@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:async';
 import 'package:book_review_app/env/key.dart' as config;
 import 'package:google_fonts/google_fonts.dart';
 
@@ -87,17 +88,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: 200,
                   child: TextField(
                     cursorColor: Colors.grey,
-                    decoration: InputDecoration
-                    (border: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.grey,
                         ),
                       ),
-                      ),
+                    ),
                     controller: txtSearchController,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.search,
@@ -116,7 +116,18 @@ class _HomeScreenState extends State<HomeScreen> {
               child: FutureBuilder(
                   future: _getBooks('novels'),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.data == null) {
+                    if (snapshot.hasError) {
+                      print('${snapshot.error}');
+                      return Center(
+                        child: Text('Failed to make a request',
+                            style: GoogleFonts.josefinSans(
+                                textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white60,
+                            ))),
+                      );
+                    } else if (snapshot.data == null) {
                       return Center(
                         child: Text('loading...',
                             style: GoogleFonts.josefinSans(
