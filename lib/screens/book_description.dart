@@ -13,13 +13,7 @@ class BookDescription extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.grey,
-          //     blurRadius: 2,
-          //     offset: Offset(1, 1), // Shadow position
-          //   ),
-          // ],
+          
         ),
         width: 120,
         height: 190,
@@ -53,13 +47,7 @@ class BookDescription extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.deepPurple[50],
                       borderRadius: BorderRadius.circular(20),
-                      // boxShadow: [
-                      //   BoxShadow(
-                      //     color: Colors.grey,
-                      //     blurRadius: 10.0,
-                      //     offset: Offset(3.0, 0),
-                      //   ),
-                      // ],
+                     
                     ),
                     child: Column(
                       children: [
