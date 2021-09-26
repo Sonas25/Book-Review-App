@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:book_review_app/env/key.dart' as config;
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,9 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   late TextEditingController txtSearchController;
-
 
   ScrollController controller = ScrollController();
   bool closeTopContainer = false;
@@ -52,17 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.deepPurple[800],
       appBar: AppBar(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.deepPurple[800],
         //elevation: 0.0,
         title: Center(
           child: Text(
-            "App Name",
-            style: TextStyle(
-              color: Colors.teal[700],
-              fontSize: 25.0,
-            ),
+            "Wishread",
+            style: GoogleFonts.josefinSans(
+                textStyle: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w800,
+              color: Colors.white60,
+            )),
           ),
         ),
       ),
@@ -72,33 +73,58 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
-                  Text('Search book'),
-                  Container(
-                      padding: EdgeInsets.all(20),
-                      width: 200,
-                      child: TextField(
-                        controller: txtSearchController,
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.search,
-                        onSubmitted: (text) {
-                        //  _getBooks(text);
-                        },
-                      )),
-                  Container(
-                      padding: EdgeInsets.all(20),
-                      child: IconButton(
-                          icon: Icon(Icons.search),
-                          onPressed: () =>
-                              _getBooks(txtSearchController.text))),
-                ]),
-
+              Text(
+                'Search book : ',
+                style: GoogleFonts.josefinSans(
+                    textStyle: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white60,
+                )),
+              ),
+              Container(
+                  padding: EdgeInsets.all(20),
+                  width: 200,
+                  child: TextField(
+                    cursorColor: Colors.grey,
+                    decoration: InputDecoration
+                    (border: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      ),
+                    controller: txtSearchController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.search,
+                    onSubmitted: (text) {
+                      //  _getBooks(text);
+                    },
+                  )),
+              Container(
+                  padding: EdgeInsets.all(20),
+                  child: IconButton(
+                      icon: Icon(Icons.search,
+                      color: Colors.grey,),
+                      onPressed: () => _getBooks(txtSearchController.text))),
+            ]),
             Flexible(
               child: FutureBuilder(
                   future: _getBooks('novels'),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return Center(
-                        child: Text('loading...'),
+                        child: Text('loading...',
+                            style: GoogleFonts.josefinSans(
+                                textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white60,
+                            ))),
                       );
                     } else {
                       return ListView.builder(
@@ -114,13 +140,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 7,
-                                        offset: Offset(3, 5), // Shadow position
-                                      ),
-                                    ],
+                                    // boxShadow: [
+                                    //   BoxShadow(
+                                    //     color: Colors.grey,
+                                    //     blurRadius: 7,
+                                    //     offset: Offset(3, 5), // Shadow position
+                                    //   ),
+                                    // ],
                                   ),
                                   width: 120,
                                   height: 180,
@@ -146,21 +172,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Text(
                                       snapshot.data[index].title,
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: '',
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.grey,
-                                        fontSize: 12.0,
+                                      style: GoogleFonts.josefinSans(
+                                        textStyle: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w800,
+                                          color: Colors.white60,
+                                        ),
                                       ),
                                     ),
                                     Text(
                                       snapshot.data[index].author,
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: '',
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.black,
-                                        fontSize: 15.0,
+                                      style: GoogleFonts.dancingScript(
+                                        textStyle: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white60,
+                                        ),
                                       ),
                                     ),
                                     Text(
@@ -168,11 +196,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                           snapshot.data[index].rating
                                               .toString(),
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: '',
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black,
-                                        fontSize: 16.0,
+                                      style: GoogleFonts.dancingScript(
+                                        textStyle: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white60,
+                                        ),
                                       ),
                                     ),
                                   ],

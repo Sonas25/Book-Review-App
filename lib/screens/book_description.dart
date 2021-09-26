@@ -1,5 +1,7 @@
 import 'package:book_review_app/data/book.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class BookDescription extends StatelessWidget {
   final Book bookmodel;
@@ -11,13 +13,13 @@ class BookDescription extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 2,
-              offset: Offset(4, 5), // Shadow position
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey,
+          //     blurRadius: 2,
+          //     offset: Offset(1, 1), // Shadow position
+          //   ),
+          // ],
         ),
         width: 120,
         height: 190,
@@ -37,7 +39,7 @@ class BookDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.amber,
+        color: Colors.deepPurple[800],
         child: Stack(
           children: [
             Column(
@@ -49,15 +51,15 @@ class BookDescription extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.amber[100],
+                      color: Colors.deepPurple[50],
                       borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 10.0,
-                          offset: Offset(3.0, 0),
-                        ),
-                      ],
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.grey,
+                      //     blurRadius: 10.0,
+                      //     offset: Offset(3.0, 0),
+                      //   ),
+                      // ],
                     ),
                     child: Column(
                       children: [
@@ -68,44 +70,48 @@ class BookDescription extends StatelessWidget {
                             children: [
                               Text(
                                 bookmodel.author,
-                                style: TextStyle(
-                                  fontFamily: '',
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey,
-                                  fontSize: 20.0,
+                                style: GoogleFonts.dancingScript(
+                                  textStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 10.0),
                               Text(
                                 bookmodel.title,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: '',
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontSize: 25.0,
+                                style: GoogleFonts.josefinSans(
+                                  textStyle: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                               Text(
                                 '❤ ' + bookmodel.rating.toString(),
-                                style: const TextStyle(
-                                  fontFamily: '',
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black,
-                                  fontSize: 17.0,
+                                style: GoogleFonts.josefinSans(
+                                  textStyle: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 25.0),
+                        SizedBox(height: 80.0),
                         Text(
                           'Description',
-                          style: TextStyle(
-                            fontFamily: '',
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey,
-                            fontSize: 20.0,
+                          style: GoogleFonts.josefinSans(
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         SizedBox(height: 5.0),
@@ -116,11 +122,12 @@ class BookDescription extends StatelessWidget {
                               child: Text(
                                 bookmodel.description.toString(),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: '',
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black,
-                                  fontSize: 15.0,
+                                style: GoogleFonts.josefinSans(
+                                  textStyle: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
